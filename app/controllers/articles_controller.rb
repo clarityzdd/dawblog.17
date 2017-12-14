@@ -10,6 +10,8 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    redirect_to({action: :index}, notice: 'art no encontrado') unless @article
+   
   end
 
   # GET /articles/new
@@ -64,7 +66,7 @@ class ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params[:id])
+      @article = Article.find_by_id(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
