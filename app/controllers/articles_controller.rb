@@ -6,7 +6,18 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.con_titulo(params[:buscar])
+    if @articles.present?
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html
+        format.js {render 'fallo_articulos.js.erb'}
+      end      
+    end
   end
 
   # GET /articles/1

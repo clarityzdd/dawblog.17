@@ -1,3 +1,14 @@
+<h3> Filtrar por </h3>
+<%= form_tag articles_path, method: "get", remote: true do %>
+<p>
+  <%= text_field_tag :buscar, params[:buscar] %>
+  <%= submit_tag "Buscar", name: "" %>
+</p>
+<% end %>
+<br/>
+<br/>
+
+
 <div id="articles">
   <%= render @articles %>
 </div>
