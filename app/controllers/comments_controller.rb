@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :load_article
+  before_action :load_article, except: :destroy
+  before_action :authenticate, only: :destroy
   
   def create
     @comment = @article.comments.new(comment_params)
@@ -11,6 +12,10 @@ class CommentsController < ApplicationController
   end
   
   def destroy
+    @article = current_user.articles.find_by_id(params[:article_id])
+    if @article.nil?
+       redirect_to :back, notice: "operación no permitida"
+     end
     @comment = @article.comments.find_by_id(params[:id])
     @comment.destroy
     redirect_to @article, notice: "comentario eliminado"

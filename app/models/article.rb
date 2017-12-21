@@ -10,5 +10,8 @@ class Article < ApplicationRecord
   
   scope :con_titulo, ->(term=''){ where("articles.title like ?","%#{term}%")}
   
-  
+  def owned_by?(owner)
+    return false unless owner.is_a? User
+    user == owner
+  end
 end
