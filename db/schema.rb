@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207114242) do
+ActiveRecord::Schema.define(version: 20171222105249) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20171207114242) do
     t.string "excerpt"
     t.string "location"
     t.integer "user_id"
+    t.string "foto"
   end
 
   create_table "articles_categories", id: false, force: :cascade do |t|

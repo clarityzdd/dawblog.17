@@ -8,5 +8,6 @@
       </span>
     <% end %> 
   </h3>
+   <%= image_tag(article.foto, size: "30x30") if article.foto.present? %>
    <%= article.body %> 
 <% end %> 
