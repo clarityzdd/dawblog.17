@@ -33,13 +33,14 @@
 
   <div class="field">
     <%= form.label :published_at %>
-    <%= form.datetime_select :published_at, id: :article_published_at %>
+    <%= form.text_field :published_at, id: :article_published_at, class: 'fecha' %>
   </div>
   
   <div class="field">
     <%= form.label :foto %>
     <%= form.file_field :foto, id: :foto %>
   </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
